@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c7wmamebdvc08"]
+
+[ext_resource type="Texture2D" uid="uid://bgrtc44lywu6h" path="res://assets/sky/autumn_field_puresky_1k.exr" id="1_hddm4"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qchbg"]
+panorama = ExtResource("1_hddm4")
+
+[sub_resource type="Sky" id="Sky_gp5yl"]
+sky_material = SubResource("PanoramaSkyMaterial_qchbg")
+
+[sub_resource type="Environment" id="Environment_kddj0"]
+background_mode = 2
+sky = SubResource("Sky_gp5yl")
+ambient_light_source = 3
+ambient_light_energy = 1.2
+tonemap_mode = 3
+tonemap_white = 1.5
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_intensity = 0.0
+glow_bloom = 0.2
+
+[node name="Playground" type="Node3D" unique_id=681261775]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=946636336]
+environment = SubResource("Environment_kddj0")
