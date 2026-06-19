@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://c7wmamebdvc08"]
 
-[ext_resource type="Texture2D" uid="uid://bgrtc44lywu6h" path="res://assets/sky/autumn_field_puresky_1k.exr" id="1_hddm4"]
+[ext_resource type="Texture2D" uid="uid://rixmkbi24e87" path="res://assets/sky/playground_panorama.exr" id="1_qchbg"]
+[ext_resource type="Shader" uid="uid://it5lpfowktjt" path="res://scripts/shaders/playground_water.gdshader" id="2_kddj0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qchbg"]
-panorama = ExtResource("1_hddm4")
+panorama = ExtResource("1_qchbg")
 
 [sub_resource type="Sky" id="Sky_gp5yl"]
 sky_material = SubResource("PanoramaSkyMaterial_qchbg")
@@ -12,15 +13,64 @@ sky_material = SubResource("PanoramaSkyMaterial_qchbg")
 background_mode = 2
 sky = SubResource("Sky_gp5yl")
 ambient_light_source = 3
-ambient_light_energy = 1.2
-tonemap_mode = 3
+tonemap_mode = 2
 tonemap_white = 1.5
 sdfgi_use_occlusion = true
 glow_enabled = true
 glow_intensity = 0.0
 glow_bloom = 0.2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_q8s1k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm0a5"]
+albedo_color = Color(0.743126, 0.531737, 0.361955, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_o6wi6"]
+material = SubResource("StandardMaterial3D_mm0a5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qchbg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kddj0"]
+noise = SubResource("FastNoiseLite_qchbg")
+as_normal_map = true
+bump_strength = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_emj6c"]
+render_priority = 0
+shader = ExtResource("2_kddj0")
+shader_parameter/color_shallow = Color(0.16257843, 0.7909689, 0.85619795, 1)
+shader_parameter/color_deep = Color(0.065600015, 0.3387662, 0.5738781, 1)
+shader_parameter/camera_depth_fade = 3.5
+shader_parameter/beers_law = 1.2
+shader_parameter/wave_bump = SubResource("NoiseTexture2D_kddj0")
+shader_parameter/wave_speed = Vector2(0.02, 0.02)
+shader_parameter/wave_scale = 0.15
+shader_parameter/roughness = 0.4
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mrac1"]
+material = SubResource("ShaderMaterial_emj6c")
+size = Vector2(35, 35)
+subdivide_width = 64
+subdivide_depth = 64
+
 [node name="Playground" type="Node3D" unique_id=681261775]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=946636336]
 environment = SubResource("Environment_kddj0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1831575388]
+transform = Transform3D(30.4804, 0, 0, 0, 4, 0, 0, 0, 30.0435, 0, -2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=349927721]
+shape = SubResource("BoxShape3D_q8s1k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=590834560]
+mesh = SubResource("BoxMesh_o6wi6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=370917817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("PlaneMesh_mrac1")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1554700027]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 12, 10, 12)

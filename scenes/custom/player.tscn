@@ -908,6 +908,7 @@ spring_length = 10.0
 script = ExtResource("2_c06vv")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=944694137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01696688, -0.08024216, 1.4832917e-09)
 current = true
 
 [node name="PlayerUI" type="Control" parent="." unique_id=1804472583]
