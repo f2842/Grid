@@ -1,0 +1,17 @@
+{
+	"version" : "0.1.15",
+	"sens" : "0.003",
+	"server_region" : "SA",
+	"username": "Rfvs",
+	"verified": true,
+	"premium": false,
+	"age": 25,
+	"age_group": "21+",
+	"device": "pc",
+	"user_os": "linux",
+	"influencer": false,
+	"ip":"192.168.0.1",
+	"country": "israel",
+	"tms": "345.21",
+	"hash_count" : "100000"
+}

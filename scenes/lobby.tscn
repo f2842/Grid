@@ -57,6 +57,10 @@ texture = SubResource("GradientTexture2D_nqcc7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqcc7"]
 texture = SubResource("ExternalTexture_q60fs")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q60fs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_q60fs"]
 size = Vector2(10, 10)
@@ -154,7 +158,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LobbyMainPanel" type="PanelContainer" parent="LobbyUI" unique_id=1467962804]
-visible = false
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -203,6 +206,7 @@ flat = true
 alignment = 0
 
 [node name="Settings" type="PanelContainer" parent="LobbyUI" unique_id=1854009442]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -323,6 +327,47 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_nqcc7")
 [node name="Label" type="Label" parent="LobbyUI/PanelContainer" unique_id=1563466418]
 layout_mode = 2
 text = "0.1.15"
+
+[node name="error" type="PanelContainer" parent="LobbyUI" unique_id=570610095]
+visible = false
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LobbyUI/error" unique_id=1486273562]
+layout_mode = 2
+
+[node name="ColorRect2" type="TextureRect" parent="LobbyUI/error/VBoxContainer" unique_id=254610115]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 2
+texture = SubResource("NoiseTexture2D_q60fs")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="error_message" type="Label" parent="LobbyUI/error/VBoxContainer" unique_id=1408833063]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Update your game to 0.1.15"
+horizontal_alignment = 1
+
+[node name="ColorRect3" type="TextureRect" parent="LobbyUI/error/VBoxContainer" unique_id=476232165]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 10
+texture = SubResource("NoiseTexture2D_q60fs")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="test_cube_softb2" type="RigidBody3D" parent="." unique_id=67769192]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.555992, 25.471214, -13.837354)

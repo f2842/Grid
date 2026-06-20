@@ -1,0 +1,8 @@
+{
+	"version":"0.1.15",
+	"max_fps" : 8,
+	"max_graph": 8,
+	"chat_translate": false,
+	"chat_translate_lang": "TR",
+	"voice_level": 10
+}
