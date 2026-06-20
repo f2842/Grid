@@ -1,10 +1,7 @@
 [gd_scene format=4 uid="uid://b3vssxlnj1dmb"]
 
 [ext_resource type="Texture2D" uid="uid://ck51rnrf1062q" path="res://assets/character/textures/player_skin_dummy.png" id="1_0fy6u"]
-[ext_resource type="Script" uid="uid://78sgu0ve7a6l" path="res://scenes/custom/player.gd" id="1_ouphk"]
 [ext_resource type="Script" uid="uid://bet04xojam4mx" path="res://scripts/camera_main_sa.gd" id="2_c06vv"]
-[ext_resource type="Texture2D" uid="uid://41kuh1tfi3y2" path="res://assets/ui/hud/cursor_locked.png" id="3_4lmmj"]
-[ext_resource type="Texture2D" uid="uid://bqmwurnynjtbf" path="res://assets/ui/branding/Grid_logo.png" id="4_ouphk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75l3s"]
 resource_name = "Sizecomparationdummy1Mtl"
@@ -710,7 +707,6 @@ tracks/10/keys = PackedFloat32Array(0, 1, -1, -7.634027e-08, -7.54979e-08, 2.663
 [sub_resource type="Animation" id="Animation_nlykp"]
 resource_name = "R6Armature|WalkAnim"
 length = 0.875
-loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -807,21 +803,12 @@ size = Vector3(4.0001526, 5.1034546, 1.0004883)
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_c06vv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5u60"]
-bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-
 [node name="Player" type="CharacterBody3D" unique_id=1252794549]
-script = ExtResource("1_ouphk")
 
 [node name="R6Armature" type="Node3D" parent="." unique_id=1585736740]
-transform = Transform3D(-100.00001, 8.742279e-06, 3.821371e-13, 0, -4.3711393e-06, 100.00001, 8.742279e-06, 100.00001, 4.3711393e-06, 0, 2.5143106, 0)
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 2.5143106, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="R6Armature" unique_id=419205752]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, -1.4210855e-14, 0, 1.4210855e-14, 1.0000001, 0, 0, 0)
 bones/0/name = "Torso"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, -1.1920929e-07, -0.99999994, 0, 0.99999994, -1.1920929e-07, 0, 0, 0.005)
@@ -834,7 +821,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, -1.3435884e-07, 0, 1.3435884e-07, 1, 0, 0.0100000035, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0.01, 0)
-bones/1/rotation = Quaternion(-0.0014105557, -0.00031305244, -4.417251e-07, 0.999999)
+bones/1/rotation = Quaternion(6.7179414e-08, 0, 0, 1)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Head_end"
 bones/2/parent = 1
@@ -848,7 +835,7 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(1, -1.5268057e-07, -1.5099576e-07, -1.5268049e-07, -1, 5.3743537e-07, -1.5099585e-07, -5.3743537e-07, -1, 0.01, 0.006, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0.01, 0.006, 0)
-bones/3/rotation = Quaternion(0.9999155, -7.2870264e-08, 0.013005301, -2.6530077e-07)
+bones/3/rotation = Quaternion(1, -7.6340264e-08, -7.54979e-08, -2.663161e-07)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Left Arm_end"
 bones/4/parent = 3
@@ -862,7 +849,7 @@ bones/5/parent = 0
 bones/5/rest = Transform3D(1, 1.5268057e-07, 1.5099576e-07, 1.5268049e-07, -1, 5.3743537e-07, 1.5099585e-07, -5.3743537e-07, -1, -0.01, 0.006, 0)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.01, 0.006, 0)
-bones/5/rotation = Quaternion(0.9999155, 7.2870264e-08, -0.013005301, -2.6530077e-07)
+bones/5/rotation = Quaternion(1, 7.6340264e-08, 7.54979e-08, -2.663161e-07)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Right Arm_end"
 bones/6/parent = 5
@@ -914,71 +901,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005355835, 2.5640564, -0.00
 shape = SubResource("BoxShape3D_0fy6u")
 
 [node name="CameraPivot" type="SpringArm3D" parent="." unique_id=145440551]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4688582, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 4.6264324, 0)
 collision_mask = 0
 shape = SubResource("SeparationRayShape3D_c06vv")
-spring_length = 5.0
 script = ExtResource("2_c06vv")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=944694137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01696688, -0.08024216, 1.4832917e-09)
 current = true
 
-[node name="kopru" type="CanvasLayer" parent="." unique_id=1443545800]
-
-[node name="HUD_0_1_14" type="Control" parent="kopru" unique_id=306839781]
+[node name="PlayerUI" type="Control" parent="." unique_id=1804472583]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 
-[node name="CrosshairContainer" type="Control" parent="kopru/HUD_0_1_14" unique_id=732985269]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 20)
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="kopru/HUD_0_1_14/CrosshairContainer" unique_id=1708808212]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_4lmmj")
-
-[node name="MarginContainer" type="MarginContainer" parent="kopru/HUD_0_1_14" unique_id=1164584835]
+[node name="Button" type="Button" parent="PlayerUI" unique_id=1076557433]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-
-[node name="HBoxContainer" type="HBoxContainer" parent="kopru/HUD_0_1_14/MarginContainer" unique_id=1130590332]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Button" type="Button" parent="kopru/HUD_0_1_14/MarginContainer/HBoxContainer" unique_id=1383266334]
-layout_mode = 2
-theme_override_constants/icon_max_width = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_t5u60")
-icon = ExtResource("4_ouphk")
+offset_right = 8.0
+offset_bottom = 8.0
